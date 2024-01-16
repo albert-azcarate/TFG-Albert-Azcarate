@@ -1,0 +1,19 @@
+# Quartus and ModelSim files
+**/db/
+**/incremental_db/
+**/work/
+**/output_files/
+**/simulation/
+**/eines-sisa/
+**/greybox_tmp/
+**/DE1/
+**/LAB2/
+*.bak
+*.mti
+*.mpf
+*.stp
+DE1_Control_Panel.exe.lnk
+DE1_Control_Panel.exe
+*.tmp
+*.hex
+*.dis

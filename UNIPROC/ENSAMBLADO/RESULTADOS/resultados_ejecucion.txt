@@ -1,0 +1,6 @@
+ salida de comprobacion de la propagacion de un acceso a memoria
+
+ciclo acceso pend.    acceso cache
+      tipo   direc.  tipo   direc.     segmentacion del acceso                        act. campos  estado CC    cache contenido  memoria
+                                 A/F                                                    ET ES DA                CT ET    ES DA   contenido
+  

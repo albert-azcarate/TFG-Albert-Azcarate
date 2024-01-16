@@ -1,0 +1,33 @@
+--
+-- Copyright (c) 2017 XXXX, UPC
+-- All rights reserved.
+-- 
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+use work.param_disenyo_pkg.all;
+use work.cache_pkg.all;
+use work.interface_cache_bus_dir_pkg.all;
+use work.interface_observador_pkg.all;
+
+package componentes_cache_multi_interface_pkg is
+
+component cache_multi_con_interface_bus is 										
+	port(reloj, pcero: in  std_logic;
+		arb_peticion: out std_logic;
+		arb_concesion: in std_logic;
+		pet_proc: in tp_peticion;
+		pet_listo: out st_cache_listo;
+		obs_bus: in tp_observacion;
+		resp_cache: out tp_respuesta;
+		suministro_cache: out tp_suministro;
+		suministro: out std_logic;
+		mresp_cntl_bus: in tp_respuesta_control_dir;
+		mpet_cntl_bus: out tp_peticion_control;
+		mresp_info_bus: in tp_respuesta_info_dir;
+		mpet_info_bus: out tp_peticion_info_dir;
+		identificador: in natural);
+end component;
+
+end package componentes_cache_multi_interface_pkg;

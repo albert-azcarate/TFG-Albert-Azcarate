@@ -1,0 +1,111 @@
+        prod. store xxxx yy: productor emite store; direccion: xxxx; valor: yy
+        prod. load xxxx: productor emite load; direccion: xxxx
+        store cache xxxx yy: cache inicia procesado de store; direccion: xxxx; valor: yy
+        load cache xxxx: cache inicia procesado de load; direccion: xxxx
+        consumo. valor    yy  load    xxxx: consumidor captura el valor; direccion: xxxx; valor: yy
+
+ciclo      accion
+    0     no hay peticion  proc  1
+    0     no hay peticion  proc  0
+   10         prod. store  0001    05  proc  1
+   10          prod. load  0001  proc  0
+   10         store cache  0001    05  proc  1
+   10          load cache  0001  proc  0
+   11         prod. store  0002    08  proc  1
+   11         prod. store  0005    1F  proc  0
+   23         store cache  0002    08  proc  1
+   24         prod. store  0003    12  proc  1
+   33             consumo. valor    05  load    0001  proc.  0
+   34         store cache  0005    1F  proc  0
+   35         prod. store  0001    11  proc  0
+   43         store cache  0003    12  proc  1
+   44          prod. load  0002  proc  1
+   46          load cache  0002  proc  1
+   47          prod. load  0003  proc  1
+   48             consumo. valor    08  load    0002  proc.  1
+   49          load cache  0003  proc  1
+   50          prod. load  0002  proc  1
+   51             consumo. valor    12  load    0003  proc.  1
+   52         store cache  0001    11  proc  0
+   52          load cache  0002  proc  1
+   53         prod. store  0001    01  proc  0
+   53         prod. store  0000    02  proc  1
+   54             consumo. valor    08  load    0002  proc.  1
+   55         store cache  0000    02  proc  1
+   56         prod. store  0010    03  proc  1
+   65         store cache  0001    01  proc  0
+   66          prod. load  0001  proc  0
+   68          load cache  0001  proc  0
+   70             consumo. valor    01  load    0001  proc.  0
+   78         store cache  0010    03  proc  1
+   79          prod. load  0010  proc  1
+   88             consumo. valor    01  load    0001  proc.  0
+   91             consumo. valor    01  load    0001  proc.  0
+   94             consumo. valor    01  load    0001  proc.  0
+   97             consumo. valor    01  load    0001  proc.  0
+   98          load cache  0010  proc  1
+   99         prod. store  0002    01  proc  1
+  100             consumo. valor    03  load    0010  proc.  1
+  100             consumo. valor    01  load    0001  proc.  0
+  101         store cache  0002    01  proc  1
+  102     no hay peticion  proc  1
+  103             consumo. valor    01  load    0001  proc.  0
+  104          prod. load  0010  proc  0
+  105     no hay peticion  proc  1
+  104          load cache  0010  proc  0
+  105     no hay peticion  proc  0
+  126             consumo. valor    03  load    0010  proc.  0
+  128     no hay peticion  proc  0
+  150         prod. store  0011    11  proc  0
+  150         store cache  0011    11  proc  0
+  151     no hay peticion  proc  0
+  164     no hay peticion  proc  0
+  200         prod. store  0010    02  proc  1
+  200         store cache  0010    02  proc  1
+  201         prod. store  0010    03  proc  1
+  215         store cache  0010    03  proc  1
+  216         prod. store  0010    04  proc  1
+  218         store cache  0010    04  proc  1
+  219         prod. store  0010    05  proc  1
+  220         prod. store  0011    01  proc  0
+  220         store cache  0011    01  proc  0
+  221          prod. load  0002  proc  0
+  221         store cache  0010    05  proc  1
+  222         prod. store  0010    06  proc  1
+  224         store cache  0010    06  proc  1
+  225         prod. store  0010    07  proc  1
+  227         store cache  0010    07  proc  1
+  228         prod. store  0010    08  proc  1
+  230         store cache  0010    08  proc  1
+  231          prod. load  0010  proc  1
+  237          load cache  0002  proc  0
+  238          prod. load  0003  proc  0
+  248          load cache  0010  proc  1
+  249          prod. load  0011  proc  1
+  250             consumo. valor    08  load    0010  proc.  1
+  251          load cache  0011  proc  1
+  252     no hay peticion  proc  1
+  253             consumo. valor    01  load    0011  proc.  1
+  255     no hay peticion  proc  1
+  256         prod. store  0003    12  proc  1
+  256         store cache  0003    12  proc  1
+  257          prod. load  0012  proc  1
+  260             consumo. valor    01  load    0002  proc.  0
+  261          load cache  0003  proc  0
+  262     no hay peticion  proc  0
+  263             consumo. valor    12  load    0003  proc.  0
+  265     no hay peticion  proc  0
+  270         prod. store  0012    01  proc  0
+  270          load cache  0012  proc  1
+  271     no hay peticion  proc  1
+  270         store cache  0012    01  proc  0
+  271          prod. load  0003  proc  0
+  283          load cache  0003  proc  0
+  284          prod. load  0010  proc  0
+  301             consumo. valor    01  load    0012  proc.  1
+  303     no hay peticion  proc  1
+  310             consumo. valor    12  load    0003  proc.  0
+  311          load cache  0010  proc  0
+  312     no hay peticion  proc  0
+  325             consumo. valor    08  load    0010  proc.  0
+  327     no hay peticion  proc  0

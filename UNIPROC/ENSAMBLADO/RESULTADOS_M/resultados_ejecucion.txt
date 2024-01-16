@@ -1,0 +1,664 @@
+ salida de comprobacion de la propagacion de un acceso a memoria
+
+ciclo acceso pend.    acceso cache
+      tipo   direc.  tipo   direc.     segmentacion del acceso                        act. campos  estado CC    cache contenido  memoria
+                                 A/F                                                    ET ES DA                CT ET    ES DA   contenido
+  
+    4 no hay                               IN                                        
+    5 no hay                               IN                                    
+    6 no hay                               IN                                
+    7 no hay                               IN                            
+    8 no hay                               IN                        
+    9 no hay                               IN                    
+   10 no hay         no hay            DS                                            
+   11 store   0000   store   0000      DS                                                N  N  N         DES    0  XXX 000000  0000
+   12 store   0001                F        CM                                            N  N  N       CMPET    0  XXX 000000  0000
+   13 store   0001                             PN                                        N  N  N         PMN    0  XXX 000000  0000
+   14 store   0001                                 EN                                    N  N  N        ESBN    0  XXX 000000  0000
+   15 store   0001                                     EN                                N  N  N        ESBN    0  XXX 000000  0000
+   16 store   0001                                         EN                            N  N  N        ESBN    0  XXX 000000  0000
+   17 store   0001                                             EN                        N  N  N        ESBN    0  XXX 000000  0000
+   18 store   0001                                                 EN                    N  N  N        ESBN    0  XXX 000000  0000
+   19 store   0001                                                     EN                N  N  N        ESBN    0  XXX 000000  0000
+   20 store   0001                                                         EN            N  N  N        ESBN    0  XXX 000000  0000
+   21 store   0001                             AB        S  S  S         ABN    0  000 010000  0000
+   22 store   0001                                                             ES     N  S  S         ESC    0  000 110000  0000
+   23 store   0001   store   0001      DS                                                N  N  N         DES    1  XXX 000000  0000
+   24 store   0002                A        CM                                            N  N  N       CMPET    1  XXX 000000  0000
+   25 store   0002                                 ES                                        N  S  S         ESC    1  XXX 000000  0000
+   26 store   0002   store   0002      DS                                                N  N  N         DES    2  XXX 000000  0000
+   27 store   0003                F        CM                                            N  N  N       CMPET    2  XXX 000000  0000
+   28 store   0003                             PN                                        N  N  N         PMN    2  XXX 000000  0000
+   29 store   0003                                 EN                                    N  N  N        ESBN    2  XXX 000000  0000
+   30 store   0003                                     EN                                N  N  N        ESBN    2  XXX 000000  0000
+   31 store   0003                                         EN                            N  N  N        ESBN    2  XXX 000000  0000
+   32 store   0003                                             EN                        N  N  N        ESBN    2  XXX 000000  0000
+   33 store   0003                                                 EN                    N  N  N        ESBN    2  XXX 000000  0000
+   34 store   0003                                                     EN                N  N  N        ESBN    2  XXX 000000  0000
+   35 store   0003                                                         EN            N  N  N        ESBN    2  XXX 000000  0000
+   36 store   0003                             AB        S  S  S         ABN    2  XXX 000000  0000
+   37 store   0003                                                             ES     N  S  S         ESC    2  XXX 000000  0000
+   38 store   0003   store   0003      DS                                                N  N  N         DES    3  XXX 000000  0000
+   39 store   0004                A        CM                                            N  N  N       CMPET    3  XXX 000000  0000
+   40 store   0004                                 ES                                        N  S  S         ESC    3  XXX 000000  0000
+   41 store   0004   store   0004      DS                                                N  N  N         DES    4  XXX 000000  0000
+   42 store   0005                F        CM                                            N  N  N       CMPET    4  XXX 000000  0000
+   43 store   0005                             PN                                        N  N  N         PMN    4  XXX 000000  0000
+   44 store   0005                                 EN                                    N  N  N        ESBN    4  XXX 000000  0000
+   45 store   0005                                     EN                                N  N  N        ESBN    4  XXX 000000  0000
+   46 store   0005                                         EN                            N  N  N        ESBN    4  XXX 000000  0000
+   47 store   0005                                             EN                        N  N  N        ESBN    4  XXX 000000  0000
+   48 store   0005                                                 EN                    N  N  N        ESBN    4  XXX 000000  0000
+   49 store   0005                                                     EN                N  N  N        ESBN    4  XXX 000000  0000
+   50 store   0005                                                         EN            N  N  N        ESBN    4  XXX 000000  0000
+   51 store   0005                             AB        S  S  S         ABN    4  XXX 000000  0000
+   52 store   0005                                                             ES     N  S  S         ESC    4  XXX 000000  0000
+   53 store   0005   store   0005      DS                                                N  N  N         DES    5  XXX 000000  0000
+   54 store   0006                A        CM                                            N  N  N       CMPET    5  XXX 000000  0000
+   55 store   0006                                 ES                                        N  S  S         ESC    5  XXX 000000  0000
+   56 store   0006   store   0006      DS                                                N  N  N         DES    6  XXX 000000  0000
+   57 store   0007                F        CM                                            N  N  N       CMPET    6  XXX 000000  0000
+   58 store   0007                             PN                                        N  N  N         PMN    6  XXX 000000  0000
+   59 store   0007                                 EN                                    N  N  N        ESBN    6  XXX 000000  0000
+   60 store   0007                                     EN                                N  N  N        ESBN    6  XXX 000000  0000
+   61 store   0007                                         EN                            N  N  N        ESBN    6  XXX 000000  0000
+   62 store   0007                                             EN                        N  N  N        ESBN    6  XXX 000000  0000
+   63 store   0007                                                 EN                    N  N  N        ESBN    6  XXX 000000  0000
+   64 store   0007                                                     EN                N  N  N        ESBN    6  XXX 000000  0000
+   65 store   0007                                                         EN            N  N  N        ESBN    6  XXX 000000  0000
+   66 store   0007                             AB        S  S  S         ABN    6  XXX 000000  0000
+   67 store   0007                                                             ES     N  S  S         ESC    6  XXX 000000  0000
+   68 store   0007   store   0007      DS                                                N  N  N         DES    7  XXX 000000  0000
+   69 store   0008                A        CM                                            N  N  N       CMPET    7  XXX 000000  0000
+   70 store   0008                                 ES                                        N  S  S         ESC    7  XXX 000000  0000
+   71 store   0008   store   0008      DS                                                N  N  N         DES    0  000 110100  0000
+   72 store   0009                F        CM                                            N  N  N       CMPET    0  000 110100  0000
+   73 store   0009                             PN                                        N  N  N         PMN    0  000 110100  0000
+   74 store   0009                                 EN                                    N  N  N        ESBN    0  000 110100  0000
+   75 store   0009                                     EN                                N  N  N        ESBN    0  000 110100  0000
+   76 store   0009                                         EN                            N  N  N        ESBN    0  000 110100  0000
+   77 store   0009                                             EN                        N  N  N        ESBN    0  000 110100  0000
+   78 store   0009                                                 EN                    N  N  N        ESBN    0  000 110100  0000
+   79 store   0009                                                     EN                N  N  N        ESBN    0  000 110100  0000
+   80 store   0009                                                         EN            N  N  N        ESBN    0  000 110100  0000
+   81 store   0009                             AB        S  S  S         ABN    0  000 110100  0000
+   82 store   0009                                                             ES     N  S  S         ESC    0  000 110100  0000
+   83 store   0009   store   0009      DS                                                N  N  N         DES    1  000 110302  0000
+   84 store   000A                A        CM                                            N  N  N       CMPET    1  000 110302  0000
+   85 store   000A                                 ES                                        N  S  S         ESC    1  000 110302  0000
+   86 store   000A   store   000A      DS                                                N  N  N         DES    2  000 110504  0000
+   87 store   000B                F        CM                                            N  N  N       CMPET    2  000 110504  0000
+   88 store   000B                             PN                                        N  N  N         PMN    2  000 110504  0000
+   89 store   000B                                 EN                                    N  N  N        ESBN    2  000 110504  0000
+   90 store   000B                                     EN                                N  N  N        ESBN    2  000 110504  0000
+   91 store   000B                                         EN                            N  N  N        ESBN    2  000 110504  0000
+   92 store   000B                                             EN                        N  N  N        ESBN    2  000 110504  0000
+   93 store   000B                                                 EN                    N  N  N        ESBN    2  000 110504  0000
+   94 store   000B                                                     EN                N  N  N        ESBN    2  000 110504  0000
+   95 store   000B                                                         EN            N  N  N        ESBN    2  000 110504  0000
+   96 store   000B                             AB        S  S  S         ABN    2  000 110504  0000
+   97 store   000B                                                             ES     N  S  S         ESC    2  000 110504  0000
+   98 store   000B   store   000B      DS                                                N  N  N         DES    3  000 110706  0000
+   99 store   000C                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  100 store   000C                                 ES                                        N  S  S         ESC    3  000 110706  0000
+  101 store   000C   store   000C      DS                                                N  N  N         DES    4  000 110908  0000
+  102 store   000D                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  103 store   000D                             PN                                        N  N  N         PMN    4  000 110908  0000
+  104 store   000D                                 EN                                    N  N  N        ESBN    4  000 110908  0000
+  105 store   000D                                     EN                                N  N  N        ESBN    4  000 110908  0000
+  106 store   000D                                         EN                            N  N  N        ESBN    4  000 110908  0000
+  107 store   000D                                             EN                        N  N  N        ESBN    4  000 110908  0000
+  108 store   000D                                                 EN                    N  N  N        ESBN    4  000 110908  0000
+  109 store   000D                                                     EN                N  N  N        ESBN    4  000 110908  0000
+  110 store   000D                                                         EN            N  N  N        ESBN    4  000 110908  0000
+  111 store   000D                             AB        S  S  S         ABN    4  000 110908  0000
+  112 store   000D                                                             ES     N  S  S         ESC    4  000 110908  0000
+  113 store   000D   store   000D      DS                                                N  N  N         DES    5  000 110B0A  0000
+  114 store   000E                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  115 store   000E                                 ES                                        N  S  S         ESC    5  000 110B0A  0000
+  116 store   000E   store   000E      DS                                                N  N  N         DES    6  000 110D0C  0000
+  117 store   000F                F        CM                                            N  N  N       CMPET    6  000 110D0C  0000
+  118 store   000F                             PN                                        N  N  N         PMN    6  000 110D0C  0000
+  119 store   000F                                 EN                                    N  N  N        ESBN    6  000 110D0C  0000
+  120 store   000F                                     EN                                N  N  N        ESBN    6  000 110D0C  0000
+  121 store   000F                                         EN                            N  N  N        ESBN    6  000 110D0C  0000
+  122 store   000F                                             EN                        N  N  N        ESBN    6  000 110D0C  0000
+  123 store   000F                                                 EN                    N  N  N        ESBN    6  000 110D0C  0000
+  124 store   000F                                                     EN                N  N  N        ESBN    6  000 110D0C  0000
+  125 store   000F                                                         EN            N  N  N        ESBN    6  000 110D0C  0000
+  126 store   000F                             AB        S  S  S         ABN    6  000 110D0C  0000
+  127 store   000F                                                             ES     N  S  S         ESC    6  000 110D0C  0000
+  128 store   000F   store   000F      DS                                                N  N  N         DES    7  000 11000E  0000
+  129 store   0012                A        CM                                            N  N  N       CMPET    7  000 11000E  0000
+  130 store   0012                                 ES                                        N  S  S         ESC    7  000 110F0E  0000
+  131 store   0012   store   0012      DS                                                N  N  N         DES    2  000 110504  0000
+  132 store   0013                F        CM                                            N  N  N       CMPET    2  000 110504  0000
+  133 store   0013                                 LE                                        N  N  S         LBE    2  000 110504  0000
+  134 store   0013                             PE                                    N  N  N         PME    2  000 110504  0000
+  135 store   0013                                     EE                                N  N  N        ESBE    2  000 110504  0000
+  136 store   0013                                         EE                            N  N  N        ESBE    2  000 110504  0000
+  137 store   0013                                             EE                        N  N  N        ESBE    2  000 110504  0000
+  138 store   0013                                                 EE                    N  N  N        ESBE    2  000 110504  0000
+  139 store   0013                                                     EE                N  N  N        ESBE    2  000 110504  0000
+  140 store   0013                                                         EE            N  N  N        ESBE    2  000 110504  0000
+  141 store   0013                                                             EE        N  N  N        ESBE    2  000 110504  0000
+  142 store   0013                             PN     N  N  N         PMN    2  000 110504  0000
+  143 store   0013                                                                 EN     N  N  N        ESBN    2  000 110504  0000
+  144 store   0013                                                                     EN     N  N  N        ESBN    2  000 110504  0000
+  145 store   0013                                                                         EN     N  N  N        ESBN    2  000 110504  0000
+  146 store   0013                                                                             EN     N  N  N        ESBN    2  000 110504  0000
+  147 store   0013                                                                                 EN     N  N  N        ESBN    2  000 110504  0000
+  148 store   0013                                                                                     EN     N  N  N        ESBN    2  000 110504  0000
+  149 store   0013                                                                                         EN     N  N  N        ESBN    2  000 110504  0000
+  150 store   0013                             AB     S  S  S         ABN    2  000 110504  0000
+  151 store   0013                                                                                             ES     N  S  S         ESC    2  000 110504  0000
+  152 store   0013   store   0013      DS                                                N  N  N         DES    3  000 110706  0000
+  153 store   0014                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  154 store   0014                                 ES                                        N  S  S         ESC    3  000 110706  0000
+  155 store   0014   store   0014      DS                                                N  N  N         DES    4  000 110908  0000
+  156 store   0015                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  157 store   0015                                 LE                                        N  N  S         LBE    4  000 110908  0000
+  158 store   0015                             PE                                    N  N  N         PME    4  000 110908  0000
+  159 store   0015                                     EE                                N  N  N        ESBE    4  000 110908  0000
+  160 store   0015                                         EE                            N  N  N        ESBE    4  000 110908  0000
+  161 store   0015                                             EE                        N  N  N        ESBE    4  000 110908  0000
+  162 store   0015                                                 EE                    N  N  N        ESBE    4  000 110908  0000
+  163 store   0015                                                     EE                N  N  N        ESBE    4  000 110908  0000
+  164 store   0015                                                         EE            N  N  N        ESBE    4  000 110908  0000
+  165 store   0015                                                             EE        N  N  N        ESBE    4  000 110908  0000
+  166 store   0015                             PN     N  N  N         PMN    4  000 110908  0000
+  167 store   0015                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  168 store   0015                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  169 store   0015                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  170 store   0015                                                                             EN     N  N  N        ESBN    4  000 110908  0000
+  171 store   0015                                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  172 store   0015                                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  173 store   0015                                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  174 store   0015                             AB     S  S  S         ABN    4  000 110908  0000
+  175 store   0015                                                                                             ES     N  S  S         ESC    4  000 110908  0000
+  176 store   0015   store   0015      DS                                                N  N  N         DES    5  000 110B0A  0000
+  177 load    0000                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  178 load    0000                                 ES                                        N  S  S         ESC    5  000 110B0A  0000
+  179 load    0000   load    0000      DS                                                N  N  N         DES    0  000 110100  0000
+  180 load    0000                A        CM                                            N  N  N       CMPET    0  000 110100  0000
+  181 load    0000                             LC                                        N  N  S         LEC    0  000 110100  0000
+  182 load    0012   load    0012      DS                                                N  N  N         DES    2  001 110302  0000
+  183 load    0012                A        CM                                            N  N  N       CMPET    2  001 110302  0000
+  184 load    0012                             LC                                        N  N  S         LEC    2  001 110302  0000
+  185 load    0001   load    0001      DS                                                N  N  N         DES    1  001 110100  0302
+  186 load    0001                A        CM                                            N  N  N       CMPET    1  001 110100  0302
+  187 load    0001                             LC                                        N  N  S         LEC    1  001 110100  0302
+  188 load    0013   load    0013      DS                                                N  N  N         DES    3  000 110706  0000
+  189 load    0013                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  190 load    0013                             LC                                        N  N  S         LEC    3  000 110706  0000
+  191 load    0002   load    0002      DS                                                N  N  N         DES    2  001 110302  0504
+  192 load    0002                F        CM                                            N  N  N       CMPET    2  001 110302  0504
+  193 load    0002                                 LE                                        N  N  S         LBE    2  001 110302  0504
+  194 load    0002                             PE                                    N  N  N         PME    2  001 110302  0504
+  195 load    0002                                     EE                                N  N  N        ESBE    2  001 110302  0504
+  196 load    0002                                         EE                            N  N  N        ESBE    2  001 110302  0504
+  197 load    0002                                             EE                        N  N  N        ESBE    2  001 110302  0504
+  198 load    0002                                                 EE                    N  N  N        ESBE    2  001 110302  0504
+  199 load    0002                                                     EE                N  N  N        ESBE    2  001 110302  0504
+  200 load    0002                                                         EE            N  N  N        ESBE    2  001 110302  0504
+  201 load    0002                                                             EE        N  N  N        ESBE    2  001 110302  0504
+  202 load    0002                             PN     N  N  N         PMN    2  001 110302  0504
+  203 load    0002                                                                 EN     N  N  N        ESBN    2  001 110302  0504
+  204 load    0002                                                                     EN     N  N  N        ESBN    2  001 110302  0504
+  205 load    0002                                                                         EN     N  N  N        ESBN    2  001 110302  0504
+  206 load    0002                                                                             EN     N  N  N        ESBN    2  001 110302  0504
+  207 load    0002                                                                                 EN     N  N  N        ESBN    2  001 110302  0504
+  208 load    0002                                                                                     EN     N  N  N        ESBN    2  001 110302  0504
+  209 load    0002                                                                                         EN     N  N  N        ESBN    2  001 110302  0504
+  210 load    0002                             AB     S  S  S         ABN    2  001 110302  0504
+  211 load    0002                                                                                         LC     N  N  S         LEC    2  001 110302  0504
+  212 load    0014   load    0014      DS                                                N  N  N         DES    4  000 110908  0000
+  213 load    0014                A        CM                                            N  N  N       CMPET    4  000 110908  0000
+  214 load    0014                             LC                                        N  N  S         LEC    4  000 110908  0000
+  215 load    0003   load    0003      DS                                                N  N  N         DES    3  000 110706  0000
+  216 load    0003                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  217 load    0003                             LC                                        N  N  S         LEC    3  000 110706  0000
+  218 load    0015   load    0015      DS                                                N  N  N         DES    5  000 110B0A  0000
+  219 load    0015                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  220 load    0015                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  221 store   0022   store   0022      DS                                                N  N  N         DES    2  001 110302  0000
+  222 load    0004                F        CM                                            N  N  N       CMPET    2  001 110302  0000
+  223 load    0004                             PN                                        N  N  N         PMN    2  001 110302  0000
+  224 load    0004                                 EN                                    N  N  N        ESBN    2  001 110302  0000
+  225 load    0004                                     EN                                N  N  N        ESBN    2  001 110302  0000
+  226 load    0004                                         EN                            N  N  N        ESBN    2  001 110302  0000
+  227 load    0004                                             EN                        N  N  N        ESBN    2  001 110302  0000
+  228 load    0004                                                 EN                    N  N  N        ESBN    2  001 110302  0000
+  229 load    0004                                                     EN                N  N  N        ESBN    2  001 110302  0000
+  230 load    0004                                                         EN            N  N  N        ESBN    2  001 110302  0000
+  231 load    0004                             AB        S  S  S         ABN    2  001 110302  0000
+  232 load    0004                                                             ES     N  S  S         ESC    2  001 110302  0000
+  233 load    0004   load    0004      DS                                                N  N  N         DES    4  000 110908  0000
+  234 load    0004                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  235 load    0004                                 LE                                        N  N  S         LBE    4  000 110908  0000
+  236 load    0004                             PE                                    N  N  N         PME    4  000 110908  0000
+  237 load    0004                                     EE                                N  N  N        ESBE    4  000 110908  0000
+  238 load    0004                                         EE                            N  N  N        ESBE    4  000 110908  0000
+  239 load    0004                                             EE                        N  N  N        ESBE    4  000 110908  0000
+  240 load    0004                                                 EE                    N  N  N        ESBE    4  000 110908  0000
+  241 load    0004                                                     EE                N  N  N        ESBE    4  000 110908  0000
+  242 load    0004                                                         EE            N  N  N        ESBE    4  000 110908  0000
+  243 load    0004                                                             EE        N  N  N        ESBE    4  000 110908  0000
+  244 load    0004                             PN     N  N  N         PMN    4  000 110908  0000
+  245 load    0004                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  246 load    0004                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  247 load    0004                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  248 load    0004                                                                             EN     N  N  N        ESBN    4  000 110908  0000
+  249 load    0004                                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  250 load    0004                                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  251 load    0004                                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  252 load    0004                             AB     S  S  S         ABN    4  000 110908  0000
+  253 load    0004                                                                                         LC     N  N  S         LEC    4  000 110908  0000
+  254 load    0012   load    0012      DS                                                N  N  N         DES    2  000 010504  0000
+  255 load    0012                F        CM                                            N  N  N       CMPET    2  000 010504  0000
+  256 load    0012                                 LE                                        N  N  S         LBE    2  000 010504  0000
+  257 load    0012                             PE                                    N  N  N         PME    2  000 010504  0000
+  258 load    0012                                     EE                                N  N  N        ESBE    2  000 010504  0000
+  259 load    0012                                         EE                            N  N  N        ESBE    2  000 010504  0000
+  260 load    0012                                             EE                        N  N  N        ESBE    2  000 010504  0000
+  261 load    0012                                                 EE                    N  N  N        ESBE    2  000 010504  0000
+  262 load    0012                                                     EE                N  N  N        ESBE    2  000 010504  0000
+  263 load    0012                                                         EE            N  N  N        ESBE    2  000 010504  0000
+  264 load    0012                                                             EE        N  N  N        ESBE    2  000 010504  0000
+  265 load    0012                             PN     N  N  N         PMN    2  000 010504  0000
+  266 load    0012                                                                 EN     N  N  N        ESBN    2  000 010504  0000
+  267 load    0012                                                                     EN     N  N  N        ESBN    2  000 010504  0000
+  268 load    0012                                                                         EN     N  N  N        ESBN    2  000 010504  0000
+  269 load    0012                                                                             EN     N  N  N        ESBN    2  000 010504  0000
+  270 load    0012                                                                                 EN     N  N  N        ESBN    2  000 010504  0000
+  271 load    0012                                                                                     EN     N  N  N        ESBN    2  000 010504  0000
+  272 load    0012                                                                                         EN     N  N  N        ESBN    2  000 010504  0000
+  273 load    0012                             AB     S  S  S         ABN    2  000 010504  0000
+  274 load    0012                                                                                         LC     N  N  S         LEC    2  000 010504  0000
+  275 load    0005   load    0005      DS                                                N  N  N         DES    5  000 110B0A  0000
+  276 load    0005                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  277 load    0005                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  278 load    0013   load    0013      DS                                                N  N  N         DES    3  000 110706  0000
+  279 load    0013                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  280 load    0013                             LC                                        N  N  S         LEC    3  000 110706  0000
+  281 load    0006   load    0006      DS                                                N  N  N         DES    6  000 110D0C  0000
+  282 load    0006                A        CM                                            N  N  N       CMPET    6  000 110D0C  0000
+  283 load    0006                             LC                                        N  N  S         LEC    6  000 110D0C  0000
+  284 load    0014   load    0014      DS                                                N  N  N         DES    4  000 110908  0000
+  285 load    0014                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  286 load    0014                             PN                                        N  N  N         PMN    4  000 110908  0000
+  287 load    0014                                 EN                                    N  N  N        ESBN    4  000 110908  0000
+  288 load    0014                                     EN                                N  N  N        ESBN    4  000 110908  0000
+  289 load    0014                                         EN                            N  N  N        ESBN    4  000 110908  0000
+  290 load    0014                                             EN                        N  N  N        ESBN    4  000 110908  0000
+  291 load    0014                                                 EN                    N  N  N        ESBN    4  000 110908  0000
+  292 load    0014                                                     EN                N  N  N        ESBN    4  000 110908  0000
+  293 load    0014                                                         EN            N  N  N        ESBN    4  000 110908  0000
+  294 load    0014                             AB        S  S  S         ABN    4  000 110908  0000
+  295 load    0014                                                         LC     N  N  S         LEC    4  000 110908  0000
+  296 load    0007   load    0007      DS                                                N  N  N         DES    7  000 110F0E  0000
+  297 load    0007                A        CM                                            N  N  N       CMPET    7  000 110F0E  0000
+  298 load    0007                             LC                                        N  N  S         LEC    7  000 110F0E  0000
+  299 load    0015   load    0015      DS                                                N  N  N         DES    5  000 110B0A  0000
+  300 load    0015                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  301 load    0015                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  302 store   0023   store   0023      DS                                                N  N  N         DES    3  000 110706  0000
+  303 load    0008                F        CM                                            N  N  N       CMPET    3  000 110706  0000
+  304 load    0008                             PN                                        N  N  N         PMN    3  000 110706  0000
+  305 load    0008                                 EN                                    N  N  N        ESBN    3  000 110706  0000
+  306 load    0008                                     EN                                N  N  N        ESBN    3  000 110706  0000
+  307 load    0008                                         EN                            N  N  N        ESBN    3  000 110706  0000
+  308 load    0008                                             EN                        N  N  N        ESBN    3  000 110706  0000
+  309 load    0008                                                 EN                    N  N  N        ESBN    3  000 110706  0000
+  310 load    0008                                                     EN                N  N  N        ESBN    3  000 110706  0000
+  311 load    0008                                                         EN            N  N  N        ESBN    3  000 110706  0000
+  312 load    0008                             AB        S  S  S         ABN    3  000 110706  0000
+  313 load    0008                                                             ES     N  S  S         ESC    3  000 110706  0000
+  314 load    0008   load    0008      DS                                                N  N  N         DES    0  000 110100  0000
+  315 load    0008                A        CM                                            N  N  N       CMPET    0  000 110100  0000
+  316 load    0008                             LC                                        N  N  S         LEC    0  000 110100  0000
+  317 load    0012   load    0012      DS                                                N  N  N         DES    2  001 010302  0000
+  318 load    0012                F        CM                                            N  N  N       CMPET    2  001 010302  0000
+  319 load    0012                                 LE                                        N  N  S         LBE    2  001 010302  0000
+  320 load    0012                             PE                                    N  N  N         PME    2  001 010302  0000
+  321 load    0012                                     EE                                N  N  N        ESBE    2  001 010302  0000
+  322 load    0012                                         EE                            N  N  N        ESBE    2  001 010302  0000
+  323 load    0012                                             EE                        N  N  N        ESBE    2  001 010302  0000
+  324 load    0012                                                 EE                    N  N  N        ESBE    2  001 010302  0000
+  325 load    0012                                                     EE                N  N  N        ESBE    2  001 010302  0000
+  326 load    0012                                                         EE            N  N  N        ESBE    2  001 010302  0000
+  327 load    0012                                                             EE        N  N  N        ESBE    2  001 010302  0000
+  328 load    0012                             PN     N  N  N         PMN    2  001 010302  0000
+  329 load    0012                                                                 EN     N  N  N        ESBN    2  001 010302  0000
+  330 load    0012                                                                     EN     N  N  N        ESBN    2  001 010302  0000
+  331 load    0012                                                                         EN     N  N  N        ESBN    2  001 010302  0000
+  332 load    0012                                                                             EN     N  N  N        ESBN    2  001 010302  0000
+  333 load    0012                                                                                 EN     N  N  N        ESBN    2  001 010302  0000
+  334 load    0012                                                                                     EN     N  N  N        ESBN    2  001 010302  0000
+  335 load    0012                                                                                         EN     N  N  N        ESBN    2  001 010302  0000
+  336 load    0012                             AB     S  S  S         ABN    2  001 010302  0000
+  337 load    0012                                                                                         LC     N  N  S         LEC    2  001 010302  0000
+  338 load    0009   load    0009      DS                                                N  N  N         DES    1  001 010100  0100
+  339 load    0009                A        CM                                            N  N  N       CMPET    1  001 010100  0100
+  340 load    0009                             LC                                        N  N  S         LEC    1  001 010100  0100
+  341 load    0013   load    0013      DS                                                N  N  N         DES    3  000 110706  0000
+  342 load    0013                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  343 load    0013                             LC                                        N  N  S         LEC    3  000 110706  0000
+  344 load    000A   load    000A      DS                                                N  N  N         DES    2  001 010302  0302
+  345 load    000A                A        CM                                            N  N  N       CMPET    2  001 010302  0302
+  346 load    000A                             LC                                        N  N  S         LEC    2  001 010302  0302
+  347 load    0014   load    0014      DS                                                N  N  N         DES    4  000 110908  0000
+  348 load    0014                A        CM                                            N  N  N       CMPET    4  000 110908  0000
+  349 load    0014                             LC                                        N  N  S         LEC    4  000 110908  0000
+  350 load    000B   load    000B      DS                                                N  N  N         DES    3  000 110706  0000
+  351 load    000B                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  352 load    000B                             LC                                        N  N  S         LEC    3  000 110706  0000
+  353 load    0015   load    0015      DS                                                N  N  N         DES    5  000 110B0A  0000
+  354 load    0015                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  355 load    0015                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  356 store   0024   store   0024      DS                                                N  N  N         DES    4  000 110908  0000
+  357 load    000C                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  358 load    000C                             PN                                        N  N  N         PMN    4  000 110908  0000
+  359 load    000C                                 EN                                    N  N  N        ESBN    4  000 110908  0000
+  360 load    000C                                     EN                                N  N  N        ESBN    4  000 110908  0000
+  361 load    000C                                         EN                            N  N  N        ESBN    4  000 110908  0000
+  362 load    000C                                             EN                        N  N  N        ESBN    4  000 110908  0000
+  363 load    000C                                                 EN                    N  N  N        ESBN    4  000 110908  0000
+  364 load    000C                                                     EN                N  N  N        ESBN    4  000 110908  0000
+  365 load    000C                                                         EN            N  N  N        ESBN    4  000 110908  0000
+  366 load    000C                             AB        S  S  S         ABN    4  000 110908  0000
+  367 load    000C                                                             ES     N  S  S         ESC    4  000 110908  0000
+  368 load    000C   load    000C      DS                                                N  N  N         DES    4  000 110908  0000
+  369 load    000C                A        CM                                            N  N  N       CMPET    4  000 110908  0000
+  370 load    000C                             LC                                        N  N  S         LEC    4  000 110908  0000
+  371 load    0012   load    0012      DS                                                N  N  N         DES    2  002 11003E  0000
+  372 load    0012                A        CM                                            N  N  N       CMPET    2  002 11003E  0000
+  373 load    0012                             LC                                        N  N  S         LEC    2  002 11003E  0000
+  374 load    000D   load    000D      DS                                                N  N  N         DES    5  000 110B0A  0000
+  375 load    000D                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  376 load    000D                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  377 load    0013   load    0013      DS                                                N  N  N         DES    3  000 110706  0000
+  378 load    0013                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  379 load    0013                             LC                                        N  N  S         LEC    3  000 110706  0000
+  380 load    000E   load    000E      DS                                                N  N  N         DES    6  000 110D0C  0000
+  381 load    000E                A        CM                                            N  N  N       CMPET    6  000 110D0C  0000
+  382 load    000E                             LC                                        N  N  S         LEC    6  000 110D0C  0000
+  383 load    0014   load    0014      DS                                                N  N  N         DES    4  000 110908  0000
+  384 load    0014                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  385 load    0014                                 LE                                        N  N  S         LBE    4  000 110908  0000
+  386 load    0014                             PE                                    N  N  N         PME    4  000 110908  0000
+  387 load    0014                                     EE                                N  N  N        ESBE    4  000 110908  0000
+  388 load    0014                                         EE                            N  N  N        ESBE    4  000 110908  0000
+  389 load    0014                                             EE                        N  N  N        ESBE    4  000 110908  0000
+  390 load    0014                                                 EE                    N  N  N        ESBE    4  000 110908  0000
+  391 load    0014                                                     EE                N  N  N        ESBE    4  000 110908  0000
+  392 load    0014                                                         EE            N  N  N        ESBE    4  000 110908  0000
+  393 load    0014                                                             EE        N  N  N        ESBE    4  000 110908  0000
+  394 load    0014                             PN     N  N  N         PMN    4  000 110908  0000
+  395 load    0014                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  396 load    0014                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  397 load    0014                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  398 load    0014                                                                             EN     N  N  N        ESBN    4  000 110908  0000
+  399 load    0014                                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  400 load    0014                                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  401 load    0014                                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  402 load    0014                             AB     S  S  S         ABN    4  000 110908  0000
+  403 load    0014                                                                                         LC     N  N  S         LEC    4  000 110908  0000
+  404 load    000F   load    000F      DS                                                N  N  N         DES    7  000 110F0E  0000
+  405 load    000F                A        CM                                            N  N  N       CMPET    7  000 110F0E  0000
+  406 load    000F                             LC                                        N  N  S         LEC    7  000 110F0E  0000
+  407 load    0015   load    0015      DS                                                N  N  N         DES    5  000 110B0A  0000
+  408 load    0015                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  409 load    0015                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  410 store   0025   store   0025      DS                                                N  N  N         DES    5  000 110B0A  0000
+  411 load    0022                F        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  412 load    0022                             PN                                        N  N  N         PMN    5  000 110B0A  0000
+  413 load    0022                                 EN                                    N  N  N        ESBN    5  000 110B0A  0000
+  414 load    0022                                     EN                                N  N  N        ESBN    5  000 110B0A  0000
+  415 load    0022                                         EN                            N  N  N        ESBN    5  000 110B0A  0000
+  416 load    0022                                             EN                        N  N  N        ESBN    5  000 110B0A  0000
+  417 load    0022                                                 EN                    N  N  N        ESBN    5  000 110B0A  0000
+  418 load    0022                                                     EN                N  N  N        ESBN    5  000 110B0A  0000
+  419 load    0022                                                         EN            N  N  N        ESBN    5  000 110B0A  0000
+  420 load    0022                             AB        S  S  S         ABN    5  000 110B0A  0000
+  421 load    0022                                                             ES     N  S  S         ESC    5  000 110B0A  0000
+  422 load    0022   load    0022      DS                                                N  N  N         DES    2  002 11563E  0000
+  423 load    0022                F        CM                                            N  N  N       CMPET    2  002 11563E  0000
+  424 load    0022                             PN                                        N  N  N         PMN    2  002 11563E  0000
+  425 load    0022                                 EN                                    N  N  N        ESBN    2  002 11563E  0000
+  426 load    0022                                     EN                                N  N  N        ESBN    2  002 11563E  0000
+  427 load    0022                                         EN                            N  N  N        ESBN    2  002 11563E  0000
+  428 load    0022                                             EN                        N  N  N        ESBN    2  002 11563E  0000
+  429 load    0022                                                 EN                    N  N  N        ESBN    2  002 11563E  0000
+  430 load    0022                                                     EN                N  N  N        ESBN    2  002 11563E  0000
+  431 load    0022                                                         EN            N  N  N        ESBN    2  002 11563E  0000
+  432 load    0022                             AB        S  S  S         ABN    2  002 11563E  0000
+  433 load    0022                                                         LC     N  N  S         LEC    2  002 11563E  0000
+  434 load    0023   load    0023      DS                                                N  N  N         DES    3  000 110706  0000
+  435 load    0023                A        CM                                            N  N  N       CMPET    3  000 110706  0000
+  436 load    0023                             LC                                        N  N  S         LEC    3  000 110706  0000
+  437 load    0024   load    0024      DS                                                N  N  N         DES    4  000 110908  0000
+  438 load    0024                A        CM                                            N  N  N       CMPET    4  000 110908  0000
+  439 load    0024                             LC                                        N  N  S         LEC    4  000 110908  0000
+  440 load    0025   load    0025      DS                                                N  N  N         DES    5  000 110B0A  0000
+  441 load    0025                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  442 load    0025                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  443 store   0026   store   0026      DS                                                N  N  N         DES    6  000 110D0C  0000
+  444 load    00A0                F        CM                                            N  N  N       CMPET    6  000 110D0C  0000
+  445 load    00A0                                 LE                                        N  N  S         LBE    6  000 110D0C  0000
+  446 load    00A0                             PE                                    N  N  N         PME    6  000 110D0C  0000
+  447 load    00A0                                     EE                                N  N  N        ESBE    6  000 110D0C  0000
+  448 load    00A0                                         EE                            N  N  N        ESBE    6  000 110D0C  0000
+  449 load    00A0                                             EE                        N  N  N        ESBE    6  000 110D0C  0000
+  450 load    00A0                                                 EE                    N  N  N        ESBE    6  000 110D0C  0000
+  451 load    00A0                                                     EE                N  N  N        ESBE    6  000 110D0C  0000
+  452 load    00A0                                                         EE            N  N  N        ESBE    6  000 110D0C  0000
+  453 load    00A0                                                             EE        N  N  N        ESBE    6  000 110D0C  0000
+  454 load    00A0                             PN     N  N  N         PMN    6  000 110D0C  0000
+  455 load    00A0                                                                 EN     N  N  N        ESBN    6  000 110D0C  0000
+  456 load    00A0                                                                     EN     N  N  N        ESBN    6  000 110D0C  0000
+  457 load    00A0                                                                         EN     N  N  N        ESBN    6  000 110D0C  0000
+  458 load    00A0                                                                             EN     N  N  N        ESBN    6  000 110D0C  0000
+  459 load    00A0                                                                                 EN     N  N  N        ESBN    6  000 110D0C  0000
+  460 load    00A0                                                                                     EN     N  N  N        ESBN    6  000 110D0C  0000
+  461 load    00A0                                                                                         EN     N  N  N        ESBN    6  000 110D0C  0000
+  462 load    00A0                             AB     S  S  S         ABN    6  000 110D0C  0000
+  463 load    00A0                                                                                             ES     N  S  S         ESC    6  000 110D0C  0000
+  464 load    00A0   load    00A0      DS                                                N  N  N         DES    0  000 110100  0000
+  465 load    00A1                F        CM                                            N  N  N       CMPET    0  000 110100  0000
+  466 load    00A1                                 LE                                        N  N  S         LBE    0  000 110100  0000
+  467 load    00A1                             PE                                    N  N  N         PME    0  000 110100  0000
+  468 load    00A1                                     EE                                N  N  N        ESBE    0  000 110100  0000
+  469 load    00A1                                         EE                            N  N  N        ESBE    0  000 110100  0000
+  470 load    00A1                                             EE                        N  N  N        ESBE    0  000 110100  0000
+  471 load    00A1                                                 EE                    N  N  N        ESBE    0  000 110100  0000
+  472 load    00A1                                                     EE                N  N  N        ESBE    0  000 110100  0000
+  473 load    00A1                                                         EE            N  N  N        ESBE    0  000 110100  0000
+  474 load    00A1                                                             EE        N  N  N        ESBE    0  000 110100  0000
+  475 load    00A1                             PN     N  N  N         PMN    0  000 110100  0000
+  476 load    00A1                                                                 EN     N  N  N        ESBN    0  000 110100  0000
+  477 load    00A1                                                                     EN     N  N  N        ESBN    0  000 110100  0000
+  478 load    00A1                                                                         EN     N  N  N        ESBN    0  000 110100  0000
+  479 load    00A1                                                                             EN     N  N  N        ESBN    0  000 110100  0000
+  480 load    00A1                                                                                 EN     N  N  N        ESBN    0  000 110100  0000
+  481 load    00A1                                                                                     EN     N  N  N        ESBN    0  000 110100  0000
+  482 load    00A1                                                                                         EN     N  N  N        ESBN    0  000 110100  0000
+  483 load    00A1                             AB     S  S  S         ABN    0  00A 010000  0000
+  484 load    00A1                                                                                         LC     N  N  S         LEC    0  00A 010000  0000
+  485 load    00A1   load    00A1      DS                                                N  N  N         DES    1  002 01260E  0000
+  486 load    00A2                A        CM                                            N  N  N       CMPET    1  002 01260E  0000
+  487 load    00A2                             LC                                        N  N  S         LEC    1  002 01260E  0000
+  488 load    00A2   load    00A2      DS                                                N  N  N         DES    2  002 11563E  0000
+  489 load    00A3                F        CM                                            N  N  N       CMPET    2  002 11563E  0000
+  490 load    00A3                             PN                                        N  N  N         PMN    2  002 11563E  0000
+  491 load    00A3                                 EN                                    N  N  N        ESBN    2  002 11563E  0000
+  492 load    00A3                                     EN                                N  N  N        ESBN    2  002 11563E  0000
+  493 load    00A3                                         EN                            N  N  N        ESBN    2  002 11563E  0000
+  494 load    00A3                                             EN                        N  N  N        ESBN    2  002 11563E  0000
+  495 load    00A3                                                 EN                    N  N  N        ESBN    2  002 11563E  0000
+  496 load    00A3                                                     EN                N  N  N        ESBN    2  002 11563E  0000
+  497 load    00A3                                                         EN            N  N  N        ESBN    2  002 11563E  0000
+  498 load    00A3                             AB        S  S  S         ABN    2  002 11563E  0000
+  499 load    00A3                                                         LC     N  N  S         LEC    2  002 11563E  0000
+  500 load    00A3   load    00A3      DS                                                N  N  N         DES    3  002 1100C8  0000
+  501 load    00A4                A        CM                                            N  N  N       CMPET    3  002 1100C8  0000
+  502 load    00A4                             LC                                        N  N  S         LEC    3  002 1100C8  0000
+  503 load    00A4   load    00A4      DS                                                N  N  N         DES    4  000 110908  0000
+  504 load    00A5                F        CM                                            N  N  N       CMPET    4  000 110908  0000
+  505 load    00A5                                 LE                                        N  N  S         LBE    4  000 110908  0000
+  506 load    00A5                             PE                                    N  N  N         PME    4  000 110908  0000
+  507 load    00A5                                     EE                                N  N  N        ESBE    4  000 110908  0000
+  508 load    00A5                                         EE                            N  N  N        ESBE    4  000 110908  0000
+  509 load    00A5                                             EE                        N  N  N        ESBE    4  000 110908  0000
+  510 load    00A5                                                 EE                    N  N  N        ESBE    4  000 110908  0000
+  511 load    00A5                                                     EE                N  N  N        ESBE    4  000 110908  0000
+  512 load    00A5                                                         EE            N  N  N        ESBE    4  000 110908  0000
+  513 load    00A5                                                             EE        N  N  N        ESBE    4  000 110908  0000
+  514 load    00A5                             PN     N  N  N         PMN    4  000 110908  0000
+  515 load    00A5                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  516 load    00A5                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  517 load    00A5                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  518 load    00A5                                                                             EN     N  N  N        ESBN    4  000 110908  0000
+  519 load    00A5                                                                                 EN     N  N  N        ESBN    4  000 110908  0000
+  520 load    00A5                                                                                     EN     N  N  N        ESBN    4  000 110908  0000
+  521 load    00A5                                                                                         EN     N  N  N        ESBN    4  000 110908  0000
+  522 load    00A5                             AB     S  S  S         ABN    4  000 110908  0000
+  523 load    00A5                                                                                         LC     N  N  S         LEC    4  000 110908  0000
+  524 load    00A5   load    00A5      DS                                                N  N  N         DES    5  000 110B0A  0000
+  525 load    00A6                A        CM                                            N  N  N       CMPET    5  000 110B0A  0000
+  526 load    00A6                             LC                                        N  N  S         LEC    5  000 110B0A  0000
+  527 load    00A6   load    00A6      DS                                                N  N  N         DES    6  000 110D0C  0000
+  528 load    00A7                F        CM                                            N  N  N       CMPET    6  000 110D0C  0000
+  529 load    00A7                                 LE                                        N  N  S         LBE    6  000 110D0C  0000
+  530 load    00A7                             PE                                    N  N  N         PME    6  000 110D0C  0000
+  531 load    00A7                                     EE                                N  N  N        ESBE    6  000 110D0C  0000
+  532 load    00A7                                         EE                            N  N  N        ESBE    6  000 110D0C  0000
+  533 load    00A7                                             EE                        N  N  N        ESBE    6  000 110D0C  0000
+  534 load    00A7                                                 EE                    N  N  N        ESBE    6  000 110D0C  0000
+  535 load    00A7                                                     EE                N  N  N        ESBE    6  000 110D0C  0000
+  536 load    00A7                                                         EE            N  N  N        ESBE    6  000 110D0C  0000
+  537 load    00A7                                                             EE        N  N  N        ESBE    6  000 110D0C  0000
+  538 load    00A7                             PN     N  N  N         PMN    6  000 110D0C  0000
+  539 load    00A7                                                                 EN     N  N  N        ESBN    6  000 110D0C  0000
+  540 load    00A7                                                                     EN     N  N  N        ESBN    6  000 110D0C  0000
+  541 load    00A7                                                                         EN     N  N  N        ESBN    6  000 110D0C  0000
+  542 load    00A7                                                                             EN     N  N  N        ESBN    6  000 110D0C  0000
+  543 load    00A7                                                                                 EN     N  N  N        ESBN    6  000 110D0C  0000
+  544 load    00A7                                                                                     EN     N  N  N        ESBN    6  000 110D0C  0000
+  545 load    00A7                                                                                         EN     N  N  N        ESBN    6  000 110D0C  0000
+  546 load    00A7                             AB     S  S  S         ABN    6  000 110D0C  0000
+  547 load    00A7                                                                                         LC     N  N  S         LEC    6  000 110D0C  0000
+  548 load    00A7   load    00A7      DS                                                N  N  N         DES    7  000 110F0E  0000
+  549 load    00A8                A        CM                                            N  N  N       CMPET    7  000 110F0E  0000
+  550 load    00A8                             LC                                        N  N  S         LEC    7  000 110F0E  0000
+  551 load    00A8   load    00A8      DS                                                N  N  N         DES    0  00A 010000  0000
+  552 load    00A9                F        CM                                            N  N  N       CMPET    0  00A 010000  0000
+  553 load    00A9                                 LE                                        N  N  S         LBE    0  00A 010000  0000
+  554 load    00A9                             PE                                    N  N  N         PME    0  00A 010000  0000
+  555 load    00A9                                     EE                                N  N  N        ESBE    0  00A 010000  0000
+  556 load    00A9                                         EE                            N  N  N        ESBE    0  00A 010000  0000
+  557 load    00A9                                             EE                        N  N  N        ESBE    0  00A 010000  0000
+  558 load    00A9                                                 EE                    N  N  N        ESBE    0  00A 010000  0000
+  559 load    00A9                                                     EE                N  N  N        ESBE    0  00A 010000  0000
+  560 load    00A9                                                         EE            N  N  N        ESBE    0  00A 010000  0000
+  561 load    00A9                                                             EE        N  N  N        ESBE    0  00A 010000  0000
+  562 load    00A9                             PN     N  N  N         PMN    0  00A 010000  0000
+  563 load    00A9                                                                 EN     N  N  N        ESBN    0  00A 010000  0000
+  564 load    00A9                                                                     EN     N  N  N        ESBN    0  00A 010000  0000
+  565 load    00A9                                                                         EN     N  N  N        ESBN    0  00A 010000  0000
+  566 load    00A9                                                                             EN     N  N  N        ESBN    0  00A 010000  0000
+  567 load    00A9                                                                                 EN     N  N  N        ESBN    0  00A 010000  0000
+  568 load    00A9                                                                                     EN     N  N  N        ESBN    0  00A 010000  0000
+  569 load    00A9                                                                                         EN     N  N  N        ESBN    0  00A 010000  0000
+  570 load    00A9                             AB     S  S  S         ABN    0  00A 010000  0000
+  571 load    00A9                                                                                         LC     N  N  S         LEC    0  00A 010000  0000
+  572 load    00A9   load    00A9      DS                                                N  N  N         DES    1  00A 010000  0000
+  573 load    00AA                A        CM                                            N  N  N       CMPET    1  00A 010000  0000
+  574 load    00AA                             LC                                        N  N  S         LEC    1  00A 010000  0000
+  575 load    00AA   load    00AA      DS                                                N  N  N         DES    2  00A 010000  0000
+  576 load    00AB                F        CM                                            N  N  N       CMPET    2  00A 010000  0000
+  577 load    00AB                                 LE                                        N  N  S         LBE    2  00A 010000  0000
+  578 load    00AB                             PE                                    N  N  N         PME    2  00A 010000  0000
+  579 load    00AB                                     EE                                N  N  N        ESBE    2  00A 010000  0000
+  580 load    00AB                                         EE                            N  N  N        ESBE    2  00A 010000  0000
+  581 load    00AB                                             EE                        N  N  N        ESBE    2  00A 010000  0000
+  582 load    00AB                                                 EE                    N  N  N        ESBE    2  00A 010000  0000
+  583 load    00AB                                                     EE                N  N  N        ESBE    2  00A 010000  0000
+  584 load    00AB                                                         EE            N  N  N        ESBE    2  00A 010000  0000
+  585 load    00AB                                                             EE        N  N  N        ESBE    2  00A 010000  0000
+  586 load    00AB                             PN     N  N  N         PMN    2  00A 010000  0000
+  587 load    00AB                                                                 EN     N  N  N        ESBN    2  00A 010000  0000
+  588 load    00AB                                                                     EN     N  N  N        ESBN    2  00A 010000  0000
+  589 load    00AB                                                                         EN     N  N  N        ESBN    2  00A 010000  0000
+  590 load    00AB                                                                             EN     N  N  N        ESBN    2  00A 010000  0000
+  591 load    00AB                                                                                 EN     N  N  N        ESBN    2  00A 010000  0000
+  592 load    00AB                                                                                     EN     N  N  N        ESBN    2  00A 010000  0000
+  593 load    00AB                                                                                         EN     N  N  N        ESBN    2  00A 010000  0000
+  594 load    00AB                             AB     S  S  S         ABN    2  00A 010000  0000
+  595 load    00AB                                                                                         LC     N  N  S         LEC    2  00A 010000  0000
+  596 load    00AB   load    00AB      DS                                                N  N  N         DES    3  00A 010000  0000
+  597 load    00AC                A        CM                                            N  N  N       CMPET    3  00A 010000  0000
+  598 load    00AC                             LC                                        N  N  S         LEC    3  00A 010000  0000
+  599 load    00AC   load    00AC      DS                                                N  N  N         DES    4  00A 010000  0000
+  600 load    00AD                F        CM                                            N  N  N       CMPET    4  00A 010000  0000
+  601 load    00AD                                 LE                                        N  N  S         LBE    4  00A 010000  0000
+  602 load    00AD                             PE                                    N  N  N         PME    4  00A 010000  0000
+  603 load    00AD                                     EE                                N  N  N        ESBE    4  00A 010000  0000
+  604 load    00AD                                         EE                            N  N  N        ESBE    4  00A 010000  0000
+  605 load    00AD                                             EE                        N  N  N        ESBE    4  00A 010000  0000
+  606 load    00AD                                                 EE                    N  N  N        ESBE    4  00A 010000  0000
+  607 load    00AD                                                     EE                N  N  N        ESBE    4  00A 010000  0000
+  608 load    00AD                                                         EE            N  N  N        ESBE    4  00A 010000  0000
+  609 load    00AD                                                             EE        N  N  N        ESBE    4  00A 010000  0000
+  610 load    00AD                             PN     N  N  N         PMN    4  00A 010000  0000
+  611 load    00AD                                                                 EN     N  N  N        ESBN    4  00A 010000  0000
+  612 load    00AD                                                                     EN     N  N  N        ESBN    4  00A 010000  0000
+  613 load    00AD                                                                         EN     N  N  N        ESBN    4  00A 010000  0000
+  614 load    00AD                                                                             EN     N  N  N        ESBN    4  00A 010000  0000
+  615 load    00AD                                                                                 EN     N  N  N        ESBN    4  00A 010000  0000
+  616 load    00AD                                                                                     EN     N  N  N        ESBN    4  00A 010000  0000
+  617 load    00AD                                                                                         EN     N  N  N        ESBN    4  00A 010000  0000
+  618 load    00AD                             AB     S  S  S         ABN    4  00A 010000  0000
+  619 load    00AD                                                                                         LC     N  N  S         LEC    4  00A 010000  0000
+  620 load    00AD   load    00AD      DS                                                N  N  N         DES    5  00A 010000  0000
+  621 load    00AE                A        CM                                            N  N  N       CMPET    5  00A 010000  0000
+  622 load    00AE                             LC                                        N  N  S         LEC    5  00A 010000  0000
+  623 load    00AE   load    00AE      DS                                                N  N  N         DES    6  00A 010000  0000
+  624 load    00AF                F        CM                                            N  N  N       CMPET    6  00A 010000  0000
+  625 load    00AF                                 LE                                        N  N  S         LBE    6  00A 010000  0000
+  626 load    00AF                             PE                                    N  N  N         PME    6  00A 010000  0000
+  627 load    00AF                                     EE                                N  N  N        ESBE    6  00A 010000  0000
+  628 load    00AF                                         EE                            N  N  N        ESBE    6  00A 010000  0000
+  629 load    00AF                                             EE                        N  N  N        ESBE    6  00A 010000  0000
+  630 load    00AF                                                 EE                    N  N  N        ESBE    6  00A 010000  0000
+  631 load    00AF                                                     EE                N  N  N        ESBE    6  00A 010000  0000
+  632 load    00AF                                                         EE            N  N  N        ESBE    6  00A 010000  0000
+  633 load    00AF                                                             EE        N  N  N        ESBE    6  00A 010000  0000
+  634 load    00AF                             PN     N  N  N         PMN    6  00A 010000  0000
+  635 load    00AF                                                                 EN     N  N  N        ESBN    6  00A 010000  0000
+  636 load    00AF                                                                     EN     N  N  N        ESBN    6  00A 010000  0000
+  637 load    00AF                                                                         EN     N  N  N        ESBN    6  00A 010000  0000
+  638 load    00AF                                                                             EN     N  N  N        ESBN    6  00A 010000  0000
+  639 load    00AF                                                                                 EN     N  N  N        ESBN    6  00A 010000  0000
+  640 load    00AF                                                                                     EN     N  N  N        ESBN    6  00A 010000  0000
+  641 load    00AF                                                                                         EN     N  N  N        ESBN    6  00A 010000  0000
+  642 load    00AF                             AB     S  S  S         ABN    6  00A 010000  0000
+  643 load    00AF                                                                                         LC     N  N  S         LEC    6  00A 010000  0000
+  644 load    00AF   load    00AF      DS                                                N  N  N         DES    7  00A 010000  0000
+  645 load    0026                A        CM                                            N  N  N       CMPET    7  00A 010000  0000
+  646 load    0026                             LC                                        N  N  S         LEC    7  00A 010000  0000
+  647 load    0026   load    0026      DS                                                N  N  N         DES    6  00A 010000  0000
+  648 no hay                      F        CM                                            N  N  N       CMPET    6  00A 010000  0000
+  649 no hay                                   PN                                        N  N  N         PMN    6  00A 010000  0000
+  650 no hay                                       EN                                    N  N  N        ESBN    6  00A 010000  0000
+  651 no hay                                           EN                                N  N  N        ESBN    6  00A 010000  0000
+  652 no hay                                               EN                            N  N  N        ESBN    6  00A 010000  0000
+  653 no hay                                                   EN                        N  N  N        ESBN    6  00A 010000  0000
+  654 no hay                                                       EN                    N  N  N        ESBN    6  00A 010000  0000
+  655 no hay                                                           EN                N  N  N        ESBN    6  00A 010000  0000
+  656 no hay                                                               EN            N  N  N        ESBN    6  00A 010000  0000
+  657 no hay                                   AB        S  S  S         ABN    6  00A 010000  0000
+  658 no hay                                                               LC     N  N  S         LEC    6  00A 010000  0000
+  659 no hay         no hay            DS                                            
+  660 no hay         no hay            DS                                            
+  661 no hay         no hay            DS                                            

@@ -1,0 +1,29 @@
+--
+-- Copyright (c) 2017 XXXX, UPC
+-- All rights reserved.
+-- 
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+use work.interface_cache_bus_dir_pkg.all;
+use work.retardos_RegDes_pkg.all;
+use work.bus_dir_pkg.all;
+
+entity RC_resp_dir is							-- registro con inicializacion a cero asincrona
+port (reloj, pcero: in std_logic;		-- pes: senyal de inicializacion
+		e: in tp_bus_control_resp;
+		s: out tp_bus_control_resp);
+end;
+
+architecture comportamiento of RC_resp_dir is
+begin
+process (reloj, pcero) begin
+	if pcero = '1' then 
+		s <= (others => (others => '0')) after retREGDES;
+	elsif rising_edge(reloj) then
+		s <= e after retREGDES;
+	end if;
+end process;
+end;
+
